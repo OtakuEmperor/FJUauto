@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">輔大Wifi君</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="LDAP">LDAP</string>
+    <string name="Passwd">密碼</string>
+    <string name="Connect">------連線------</string>
+    <string name="wifiManager">----開啟WiFi----</string>
+    <string name="powered">powered by GaryTan@NISRA</string>
+
+</resources>
