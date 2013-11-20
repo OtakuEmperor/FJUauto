@@ -42,10 +42,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		/*Àx¦s±b¸¹±K½X*/
+		/*ï¿½xï¿½sï¿½bï¿½ï¿½ï¿½Kï¿½X*/
 		restorePrefs();
 		
-		/*³s½u*/
+		/*ï¿½sï¿½u*/
 		Button connect = (Button)findViewById(R.id.button1);
 		connect.setOnClickListener(new OnClickListener() {
 
@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 		Button wifiManager_button = (Button)findViewById(R.id.button2);
 		WifiManager wiFiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
 		if(wiFiManager.isWifiEnabled()) {
-			wifiManager_button.setText("----Ãö³¬WiFi----");
+			wifiManager_button.setText("----ï¿½ï¿½ï¿½ï¿½WiFi----");
 		}
 		wifiManager_button.setOnClickListener(new OnClickListener() {
 
@@ -80,12 +80,13 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	/*³s½u¥Dµ{§Ç*/
+	/*ï¿½sï¿½uï¿½Dï¿½{ï¿½ï¿½*/
 	Runnable runnable = new Runnable() {
 		public void run() {
 			EditText field_LDAP = (EditText)findViewById(R.id.editText1);
 			EditText field_passwd = (EditText)findViewById(R.id.editText2);
 			
+			//https!!
 			HttpClient client = new DefaultHttpClient();
 			String URL = "http://fju2.auth.fju.edu.tw/auth/index.html/u";
 			HttpPost post = new HttpPost(URL);
@@ -93,18 +94,19 @@ public class MainActivity extends Activity {
 			params.add(new BasicNameValuePair("user", field_LDAP.getText().toString()));
 			params.add(new BasicNameValuePair("password", field_passwd.getText().toString()));
 			
+			//error rewrite
 			try {
 				post.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
 				HttpResponse response = client.execute(post);
 				HttpEntity entity = response.getEntity();
 				String result = EntityUtils.toString(entity);
 				Log.i("Main", result);
-				showNotification("¤w¦¨¥\³s½u¡I");
+				showNotification("ï¿½wï¿½ï¿½ï¿½\ï¿½sï¿½uï¿½I");
 				
 			}
 			catch(Exception e) {
 				Log.e("Main", "error:" + e.toString());
-				showNotification("³s½u¥¢±Ñ¡I" + " errorMessenger:"+ e.getMessage());
+				showNotification("ï¿½sï¿½uï¿½ï¿½ï¿½Ñ¡I" + " errorMessenger:"+ e.getMessage());
 			}
 			
 			
@@ -115,7 +117,7 @@ public class MainActivity extends Activity {
 		}
 	};
 	
-	/*Àx¦s±b¸¹±K½X*/
+	/*ï¿½xï¿½sï¿½bï¿½ï¿½ï¿½Kï¿½X*/
 	private void restorePrefs() {
 		EditText field_LDAP = (EditText)findViewById(R.id.editText1);
 		EditText field_passwd = (EditText)findViewById(R.id.editText2);
@@ -145,12 +147,12 @@ public class MainActivity extends Activity {
 		editor.putString(PASSWD_PREF, field_passwd.getText().toString());
 		editor.commit();
 	}
-	/*³qª¾*/
+	/*ï¿½qï¿½ï¿½*/
 	protected void showNotification(String msg) {
 		NotificationManager barManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 		Notification barMsg = new Notification(R.drawable.ic_launcher, msg, System.currentTimeMillis());
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
-		barMsg.setLatestEventInfo(MainActivity.this, "»²¤jWifi§g", msg, contentIntent);
+		barMsg.setLatestEventInfo(MainActivity.this, "ï¿½ï¿½ï¿½jWifiï¿½g", msg, contentIntent);
 		barManager.notify(0, barMsg);
 	}
 	
@@ -160,11 +162,11 @@ public class MainActivity extends Activity {
 		Button wifiManager_button = (Button)findViewById(R.id.button2);
 		if (!wiFiManager.isWifiEnabled()) {
 			wiFiManager.setWifiEnabled(true);
-			wifiManager_button.setText("----Ãö³¬WiFi----");
+			wifiManager_button.setText("----ï¿½ï¿½ï¿½ï¿½WiFi----");
 		}
 		else {
 			wiFiManager.setWifiEnabled(false);
-			wifiManager_button.setText("----¶}±ÒWiFi----");
+			wifiManager_button.setText("----ï¿½}ï¿½ï¿½WiFi----");
 		}
 	}
 
